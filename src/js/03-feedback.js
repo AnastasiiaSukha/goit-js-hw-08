@@ -15,6 +15,9 @@ form.addEventListener('input', throttle(onFormInput, 500));
 updateForm();
 
 function OnFormSubmit(event) {
+    if (input.value === '' || text.value === '') {
+       return alert('Please, fill out empty fields');
+    }
     event.preventDefault();
     event.target.reset();
     console.log(JSON.parse(localStorage.getItem(STORAGE_KEY)));
@@ -22,9 +25,10 @@ function OnFormSubmit(event) {
 
 };
 
-function onFormInput(event) {
+function onFormInput() {
     const email = input.value;
     const message = text.value;
+    
 
     const data = {
         email: email,
@@ -47,4 +51,3 @@ function updateForm() {
     } 
     
 };
-
